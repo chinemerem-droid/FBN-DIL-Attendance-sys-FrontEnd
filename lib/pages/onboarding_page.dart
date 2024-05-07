@@ -4,7 +4,7 @@ class OnbardingPage extends StatelessWidget {
   const OnbardingPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return const Scaffold();
   }
 }

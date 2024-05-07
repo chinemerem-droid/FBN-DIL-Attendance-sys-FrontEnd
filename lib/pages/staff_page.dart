@@ -5,8 +5,13 @@ class StaffPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const Text('this is the staff page'),
-    );
+    // final mediaQueryData = MediaQuery.of(context);
+ 
+    // Calculate font size based on screen width
+    // double fontSize = screenWidth * 0.05;
+    return Scaffold(
+      appBar: AppBar(
+        
+    ));
   }
 }

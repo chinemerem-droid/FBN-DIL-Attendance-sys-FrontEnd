@@ -5,8 +5,17 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: const Text('this is settings page'),
+    final mediaQueryData = MediaQuery.of(context);
+    final screenWidth = mediaQueryData.size.width;
+     // Calculate font size based on screen width
+    // double fontSize = screenWidth * 0.05;
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(0.20 * screenWidth),
+        child: Container(
+          color: Colors.blue,
+        ),
+      ),
     );
   }
 }

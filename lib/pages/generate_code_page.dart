@@ -2,13 +2,11 @@ import 'package:first_bank_attendance_system/Components/bottom_nav_bar.dart';
 import 'package:first_bank_attendance_system/Components/color.dart';
 import 'package:first_bank_attendance_system/Components/generate_code_input_field.dart';
 import 'package:first_bank_attendance_system/Components/text_field.dart';
-import 'package:first_bank_attendance_system/pages/generate_code_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class GenerateCodePage extends StatelessWidget {
+  const GenerateCodePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +48,7 @@ class LoginPage extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 50,
+                height: 40,
               ),
               SvgPicture.asset('images/illustration.svg'),
               const SizedBox(
@@ -67,7 +65,7 @@ class LoginPage extends StatelessWidget {
                           Row(
                             children: [
                               Text(
-                                'Staff ID',
+                                'Check in Code',
                                 style: TextStyle(color: primaryColor),
                               )
                             ],
@@ -75,7 +73,7 @@ class LoginPage extends StatelessWidget {
                           const SizedBox(
                             height: 5,
                           ),
-                          const MyTextField(),
+                          const GenerateCodeInputField()
                         ],
                       ),
                     ),
@@ -83,7 +81,7 @@ class LoginPage extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            'STEP 1 OF 2',
+                            'STEP 2 OF 2',
                             textAlign: TextAlign.center,
                             style: TextStyle(color: primaryColor),
                           ),
@@ -95,7 +93,7 @@ class LoginPage extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        const GenerateCodePage())),
+                                        const BottomNavBar())),
                             child: Container(
                               decoration: BoxDecoration(
                                   color: primaryColor,
@@ -103,7 +101,7 @@ class LoginPage extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.all(15),
                                 child: Center(
-                                  child: Text('Login',
+                                  child: Text('Generate code',
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 0.94 * fontSize,
