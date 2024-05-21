@@ -1,14 +1,52 @@
-import 'package:first_bank_attendance_system/Components/bottom_nav_bar.dart';
 import 'package:first_bank_attendance_system/Components/color.dart';
-import 'package:first_bank_attendance_system/Components/generate_code_input_field.dart';
 import 'package:first_bank_attendance_system/Components/text_field.dart';
-import 'package:first_bank_attendance_system/pages/generate_code_page.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  Position? _currentLocation;
+  late bool servicePermission = false;
+  late LocationPermission permission;
+
+  String _currentAdress = '';
+
+  Future<Position> _getCurrentLocation() async {
+    // code to check if we have permisiion to access location services
+    servicePermission = await Geolocator.isLocationServiceEnabled();
+    if (!servicePermission) {
+      debugPrint('service disabled');
+    }
+    // the service is enabled on phones but it is always good to check
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+    }
+    return await Geolocator.getCurrentPosition();
+  }
+
+  _getAdressFromCoordinates() async {
+    try {
+      List<Placemark> placemarks = await placemarkFromCoordinates(
+          _currentLocation!.latitude, _currentLocation!.longitude);
+
+      Placemark place = placemarks[0];
+
+      setState(() {
+        _currentAdress = '${place.locality}, ${place.country}';
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +57,8 @@ class LoginPage extends StatelessWidget {
 
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(left: 35, right: 35),
-        child: Container(
+        padding: EdgeInsets.only(left: 35, right: 35, top: 0.1 * screenHeight),
+        child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -29,9 +67,9 @@ class LoginPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Hello.',
+                    'Longitude =${_currentLocation?.longitude}',
                     style: TextStyle(
-                        fontSize: 2.19 * fontSize,
+                        fontSize: 1.19 * fontSize,
                         color: primaryColor,
                         fontWeight: FontWeight.w600),
                   )
@@ -41,7 +79,19 @@ class LoginPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Please enter your login details',
+                    'Latitude = ${_currentLocation?.latitude};',
+                    style: TextStyle(
+                        fontSize: 1.19 * fontSize,
+                        color: primaryColor,
+                        fontWeight: FontWeight.w600),
+                  )
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    '${_currentAdress}',
                     style: TextStyle(
                       fontSize: 0.69 * fontSize,
                       color: primaryColor,
@@ -50,13 +100,13 @@ class LoginPage extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                height: 50,
+                height: 60,
               ),
               SvgPicture.asset('images/illustration.svg'),
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
-              Container(
+              SizedBox(
                 height: 0.45 * screenHeight,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,11 +141,13 @@ class LoginPage extends StatelessWidget {
                             height: 50,
                           ),
                           GestureDetector(
-                            onTap: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const GenerateCodePage())),
+                            onTap: () async {
+                              _currentLocation = await _getCurrentLocation();
+                              setState(() {});
+                              await _getAdressFromCoordinates();
+                              debugPrint('${_currentLocation}');
+                              debugPrint('${_currentAdress}');
+                            },
                             child: Container(
                               decoration: BoxDecoration(
                                   color: primaryColor,

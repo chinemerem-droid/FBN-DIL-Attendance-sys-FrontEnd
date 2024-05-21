@@ -1,4 +1,5 @@
-import 'package:first_bank_attendance_system/pages/login_page.dart';
+import 'package:first_bank_attendance_system/pages/LoginPage.dart';
+// import 'package:first_bank_attendance_system/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         
       ),
-      home: const LoginPage() ,
+      home: const LoginPage2() ,
       debugShowCheckedModeBanner: false,
     );
   }

@@ -8,4 +8,6 @@ Color inputBackgroundColor = (const Color.fromARGB(255, 176, 181, 194));
 
 Color inputHintColor = (const Color.fromARGB(255, 228, 228, 228));
 
+Color pasteIconColor = (const Color.fromARGB(255, 188, 57, 57));
 
+Color infoBackgroundColor = (Color.fromARGB(255, 192, 187, 187));

@@ -1,9 +1,14 @@
 import 'package:first_bank_attendance_system/Components/color.dart';
 import 'package:flutter/material.dart';
 
-class MyTextField extends StatelessWidget {
+class MyTextField extends StatefulWidget {
   const MyTextField({super.key});
 
+  @override
+  State<MyTextField> createState() => _MyTextFieldState();
+}
+
+class _MyTextFieldState extends State<MyTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
@@ -17,7 +22,7 @@ class MyTextField extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(100),
             borderSide: BorderSide(color: (primaryColor))),
-        fillColor: const Color.fromARGB(255, 239, 235, 235),
+        fillColor: const Color.fromARGB(255, 242, 242, 242),
         filled: true,
       ),
     );
