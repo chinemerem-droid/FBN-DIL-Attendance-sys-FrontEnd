@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import data from "./mock-data.json";
+import "./HomePage.css";
+
 const HomePage = () => {
 	const [contacts, setContacts] = useState(data);
 

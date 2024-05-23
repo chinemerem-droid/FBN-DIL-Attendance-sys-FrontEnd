@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import "bootstrap";
-import "./HomePage.css";
+// import "./HomePage.css";
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
 import { MdOutlineHome } from "react-icons/md";
 import { MdOutlineNotifications } from "react-icons/md";

@@ -13,6 +13,7 @@ import data from "../Amsweb/mock-data.json";
 import { TbLogout } from "react-icons/tb";
 import dateIcon from "../images/date.svg";
 import { TbClockHour2 } from "react-icons/tb";
+import "./Layout.css"
 
 
 const Layout = () => {

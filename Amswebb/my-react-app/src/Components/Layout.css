@@ -51,8 +51,8 @@
 }
 main {
 	width: 100%;
-	padding-left: 3em;
-	padding-top: 4em;
+	
+	/* padding-top: 4em; */
 	/* border: 2px solid red; */
 	/* padding: 20px; */
 }
@@ -139,9 +139,19 @@ main {
 
 .user-con {
 	display: flex;
-	background-color: rgb(255, 255, 255);
+margin: 0px auto;
 	align-items: center;
 	gap: 8px;
+	padding-left: 15rem;
+}
+
+.userinfo{
+	width: 100%;
+	margin-bottom: 1em;
+  
+}
+.userinfo p{
+padding-left: 6em;
 }
 
 .main {
@@ -237,33 +247,6 @@ form *{
 	padding-left: 2em;
 }
 
-.userDropdown {
-	/* position: absolute; */
-	/* top: 4.5rem;
-	right: 1.5rem;
-	width: fit-content;
-	padding: 15px;
-	border-radius: 15px;
-	background: blue;
-	text-align: center; */
-	/* background-color: white; */
-	/* border: 1px solid gray; */
-}
-/* .content {
-} */
-/* .userDropdown::before{ 
-	content: '';
-	position: absolute;
-	top: -0.7rem;
-	right: 1.1rem;
-	width: 20px;
-	height: 20px;
-	background-color: #fff;
-	
-	border: 1px solid gray;
-	border-top: 1px solid gray;
-}   */
-
 tr:nth-child(even) {
 	background-color: #3457820d;
 }
@@ -275,19 +258,7 @@ tr:nth-child(even) {
 	width: 100%;
 }
 
-.table-container {
-	/* padding-left: 60px; */
-	border: 2px;
-	background: hsl(0, 0%, 100%);
 
-	width: 80%;
-	margin-left: 5em;
-	border-radius: 10px;
-	padding-top: 5px;
-	padding-left: 40px;
-	padding-right: 30px;
-	overflow: hidden;
-}
 
 .logOutIcon {
 	margin-top: 15em;
@@ -302,7 +273,7 @@ tr:nth-child(even) {
 	width: 5%;
 }
 
-table,
+/* table,
 th,
 td {
 	border-collapse: separate;
@@ -337,4 +308,4 @@ th {
 }
 .tbody {
 	padding-left: 10px;
-}
+} */
