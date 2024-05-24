@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import "bootstrap";
- import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
 import { MdOutlineHome } from "react-icons/md";
 import { MdOutlineNotifications } from "react-icons/md";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -13,12 +13,19 @@ import data from "../Amsweb/mock-data.json";
 import { TbLogout } from "react-icons/tb";
 import dateIcon from "../images/date.svg";
 import { TbClockHour2 } from "react-icons/tb";
-import "./Layout.css"
-
+import { RxPencil1 } from "react-icons/rx";
+import { FiLock } from "react-icons/fi";
+import "./Layout.css";
+import FrameIcon from "../images/Frame.svg";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Layout = () => {
 	const [contacts, setContacts] = useState(data);
 	const [isOpen, setOpen] = useState(false);
+	const [showDropdown, setDropdown] = useState(false);
+	const [showPassword, setshowPassword] = useState(false);
+	const [password, settPassword] = useState("");
+	const [shoPassword, setShoPassword] = useState(false);
 	const toggle = () => {
 		setOpen(!isOpen);
 	};
@@ -49,85 +56,155 @@ const Layout = () => {
 			name: "Manage password",
 			Icon: <CiLock className="nav-icon" />,
 		},
-	
 	];
+	const handlePasswordmodal = () => {
+		setDropdown(false);
+		setshowPassword(true);
+	};
 	return (
 		<>
-		<main className="main">
-			<div className="origial">
-				<header className="header">
-					<p>
-						<img src={dateIcon} alt="" className="dateIcon" /> Monday,May
-						13,2024 <TbClockHour2 className="clockIcon" />08:34am
-					</p>
-					
-					<div className="user-con">
-						<div className="userinfo">
-							<h4>John Doe</h4>
-							<p>Administrator</p>
-						</div>
-						<div className="usericon">
-							<img src={userIcon} alt="" />
-						</div>
-						 
-						</div> 
-						<div className="userDropdown">
-							{}
-					</div>
-				</header>
-			
+			<main className="main">
+				<div className="origial">
+					<header className="header">
+						<p>
+							<img src={dateIcon} alt="" className="dateIcon" /> Monday,May
+							13,2024 <TbClockHour2 className="clockIcon" />
+							08:34am
+						</p>
 
-				<div className="containerD">
-					<div className={isOpen ? "sidebar" : "sidebar-closed"}>
-						<div className="top-section">
-							<div className="arrow">
-								{isOpen ? (
-									<>
-										<span className="ams">AMS ADMIN PORTAL</span>
-										<IoIosArrowRoundForward
-											onClick={toggle}
-											className="main-arrow"
-										/>
-									</>
-								) : (
-									<>
-										<IoIosArrowRoundBack
-											onClick={toggle}
-											className="main-arrow"
-										/>
-									</>
-								)}
+						<div
+							className="user-con"
+							onClick={() => setDropdown(!showDropdown)}
+						>
+							<div className="userinfo">
+								<h4 className="firsthead">John Doe</h4>
+								<p className="firstpara">Administrator</p>
+							</div>
+							<div className="usericon">
+								<img src={userIcon} alt="" />
 							</div>
 						</div>
+						{showDropdown && (
+							<div className="userDropdown">
+								<div className="box">
+									<img
+										src={userIcon}
+										alt=""
+										style={{ position: "relative", width: "50px" }}
+									/>{" "}
+									<RxPencil1
+										style={{
+											position: "absolute",
+											top: "50px",
+											right: "8rem",
+											width: "20px",
+											height: "20px",
+											background: "#345782",
+											color: "white",
+											border: "1px solid white",
+											borderRadius: "50px",
+											padding: "3px",
+										}}
+									/>
+									<h4 style={{ paddingTop: "15px" }}>John Doe</h4>
+									<p className="center para">Super Administration</p>
+									<p
+										className="center"
+										style={{ color: "#345782", cursor: "pointer" }}
+										onClick={handlePasswordmodal}
+									>
+										{" "}
+										<FiLock /> Passwords
+									</p>
+								</div>
+							</div>
+						)}
+						{showPassword && (
+							<div className="darkBG" onClick={() => setshowPassword(false)}>
+								<div className="centered">
+									<div className="modal">
+										<h4>Reset password</h4>
+										<div className="inputs">
+											<div className="imageDiv">
+												<img src={FrameIcon} alt="" className="iconforreset" />
+											</div>
+											<div className="inputDiv">
+												<input
+													type={showPassword ? "tel" : "password"}
+													placeholder="Password"
+													value={password}
+													onChange={(e) => settPassword(e.target.value)}
+												/>
+												{showPassword ? (
+													<FaEye
+														className="hidePassword"
+														onClick={() => setShoPassword(!showPassword)}
+													/>
+												) : (
+													<FaEyeSlash
+														className="hidePassword"
+														onClick={() => setShoPassword(!showPassword)}
+													/>
+												)}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						)}
+					</header>
 
-						{menuItem.map((item, index) => (
+					<div className="containerD">
+						<div className={isOpen ? "sidebar" : "sidebar-closed"}>
+							<div className="top-section">
+								<div className="arrow">
+									{isOpen ? (
+										<>
+											<span className="ams">AMS ADMIN PORTAL</span>
+											<IoIosArrowRoundForward
+												onClick={toggle}
+												className="main-arrow"
+											/>
+										</>
+									) : (
+										<>
+											<IoIosArrowRoundBack
+												onClick={toggle}
+												className="main-arrow"
+											/>
+										</>
+									)}
+								</div>
+							</div>
+
+							{menuItem.map((item, index) => (
+								<NavLink
+									to={item.Path}
+									key={index}
+									className="link"
+									activeClassName="acive"
+								>
+									<div className="icon">{item.Icon}</div>
+									{isOpen && <div className="link_text">{item.name}</div>}
+								</NavLink>
+							))}
 							<NavLink
-								to={item.Path}
-								key={index}
-								className="link"
-								activeClassName="acive"
+								to={"/"}
+								className="logOutIcon"
+								// activeClassName="acive"
+								style={{ display: "flex" }}
 							>
-								<div className="icon">{item.Icon}</div>
-								{isOpen && <div className="link_text">{item.name}</div>}
-							</NavLink>
-
-						))}
-						<NavLink 
-						to={"/"}
-						className="logOutIcon"
-						// activeClassName="acive"
-						style={{display: "flex"}}
-						>
-							<div className="icon"><TbLogout className="" /></div>
+								<div className="icon">
+									<TbLogout className="" />
+								</div>
 								{isOpen && <div className="link_text">Log Out</div>}
-						</NavLink>
-
-					</div>
-					<div className="outlet-container">
-						<Outlet />
+							</NavLink>
+						</div>
+						<div className="outlet-container">
+							<Outlet />
+						</div>
 					</div>
 				</div>
-			</div>
 			</main>
 		</>
 	);

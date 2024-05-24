@@ -1,9 +1,8 @@
-*{ 
+* {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: sans-serif;
-
 }
 .original {
 	overflow: hidden;
@@ -18,6 +17,7 @@
 	padding: 0 52px;
 	margin-top: 0px auto;
 	border: 1px solid #c2c2c2;
+	position: relative;
 
 	/* position: absolute; */
 }
@@ -27,7 +27,7 @@
 	color: #345782;
 }
 
-.header p {
+.firstpara {
 	display: flex;
 	gap: 10px;
 	padding-top: 3px;
@@ -35,6 +35,9 @@
 	font-size: 18px;
 	font-weight: 400;
 	width: 40%;
+}
+.para{
+	padding: 15px 0;
 }
 
 .userIcon {
@@ -44,6 +47,12 @@
 	/* position: relative; */
 }
 
+.userDropdown .box {
+	margin: auto;
+	padding: 20px 15px;
+	text-align: center;
+}
+
 .containerD {
 	display: flex;
 	flex-direction: row;
@@ -51,7 +60,7 @@
 }
 main {
 	width: 100%;
-	
+
 	/* padding-top: 4em; */
 	/* border: 2px solid red; */
 	/* padding: 20px; */
@@ -139,26 +148,26 @@ main {
 
 .user-con {
 	display: flex;
-margin: 0px auto;
+	margin: 0px auto;
 	align-items: center;
 	gap: 8px;
-	padding-left: 15rem;
+	margin-left: 34em;
+	cursor: pointer;
 }
 
-.userinfo{
+.userinfo {
 	width: 100%;
 	margin-bottom: 1em;
-  
 }
-.userinfo p{
-padding-left: 6em;
+.userinfo p {
+	padding-left: 6em;
 }
 
 .main {
 	background-color: #eeee;
 	position: relative;
 }
-.main h4 {
+.firsthead {
 	margin: 0px auto;
 	padding-left: 8em;
 	padding-top: 2em;
@@ -258,8 +267,6 @@ tr:nth-child(even) {
 	width: 100%;
 }
 
-
-
 .logOutIcon {
 	margin-top: 15em;
 
@@ -271,6 +278,20 @@ tr:nth-child(even) {
 }
 .dateIcon {
 	width: 5%;
+}
+
+.userDropdown {
+	position: absolute;
+	top: 4rem;
+	right: 30px;
+	background: white;
+	width: 300px;
+	box-shadow: 0 0 0.2rem gray;
+	border-radius: 10px;
+}
+
+.center {
+	text-align: center !important;
 }
 
 /* table,
@@ -309,3 +330,30 @@ th {
 .tbody {
 	padding-left: 10px;
 } */
+.darkBG {
+	background-color: rgba(0, 0, 0, 0.2);
+	width: 100vw;
+	height: 100vh;
+	z-index: 0;
+	top: 0%; 
+	left: 0%; 
+	/* transform: translate(-50%, -50%); */
+	position: absolute;
+  }
+  
+  .centered {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+  }
+  
+  .modal {
+	width: 500px;
+	height: 300px;
+	background: white;
+	color: black;
+	z-index: 10;
+	border-radius: 16px;
+	box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+  }
