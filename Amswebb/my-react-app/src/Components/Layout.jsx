@@ -9,7 +9,7 @@ import { CiLock } from "react-icons/ci";
 import { NavLink, Outlet } from "react-router-dom";
 import userIcon from "../images/user-icon.svg";
 import { CiSearch } from "react-icons/ci";
-import data from "../Amsweb/mock-data.json";
+import data from "../Amsweb/data/mock-data.json";
 import { TbLogout } from "react-icons/tb";
 import dateIcon from "../images/date.svg";
 import { TbClockHour2 } from "react-icons/tb";
@@ -18,6 +18,7 @@ import { FiLock } from "react-icons/fi";
 import "./Layout.css";
 import FrameIcon from "../images/Frame.svg";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import End from "../images/End.svg";
 
 const Layout = () => {
 	const [contacts, setContacts] = useState(data);
@@ -26,6 +27,7 @@ const Layout = () => {
 	const [showPassword, setshowPassword] = useState(false);
 	const [password, settPassword] = useState("");
 	const [shoPassword, setShoPassword] = useState(false);
+	const [exitOpen, setexitOpen] = useState(false);
 	const toggle = () => {
 		setOpen(!isOpen);
 	};
@@ -51,15 +53,14 @@ const Layout = () => {
 			name: "History",
 			Icon: <MdOutlineHistory className="nav-icon" />,
 		},
-		{
-			Path: "/managepassword",
-			name: "Manage password",
-			Icon: <CiLock className="nav-icon" />,
-		},
 	];
 	const handlePasswordmodal = () => {
 		setDropdown(false);
 		setshowPassword(true);
+	};
+
+	const handleExit = () => {
+		setshowPassword(false);
 	};
 	return (
 		<>
@@ -113,25 +114,29 @@ const Layout = () => {
 										style={{ color: "#345782", cursor: "pointer" }}
 										onClick={handlePasswordmodal}
 									>
-										{" "}
 										<FiLock /> Passwords
 									</p>
 								</div>
 							</div>
 						)}
 						{showPassword && (
-							<div className="darkBG" onClick={() => setshowPassword(false)}>
+							<div className="darkBG">
 								<div className="centered">
 									<div className="modal">
-										<h4>Reset password</h4>
-										<div className="inputs">
+										<div className="top">
+											<h4>Reset password</h4>
+											<button onClick={handleExit} className="Exit">
+												<img src={End} alt="" />
+											</button>
+										</div>
+										<div className="inputss">
 											<div className="imageDiv">
 												<img src={FrameIcon} alt="" className="iconforreset" />
 											</div>
 											<div className="inputDiv">
 												<input
 													type={showPassword ? "tel" : "password"}
-													placeholder="Password"
+													placeholder="Old Password"
 													value={password}
 													onChange={(e) => settPassword(e.target.value)}
 												/>
@@ -148,6 +153,31 @@ const Layout = () => {
 												)}
 											</div>
 										</div>
+										<div className="inputss">
+											<div className="imageDiv">
+												<img src={FrameIcon} alt="" className="iconforreset" />
+											</div>
+											<div className="inputDiv">
+												<input
+													type={showPassword ? "tel" : "password"}
+													placeholder="New Password"
+													value={password}
+													onChange={(e) => settPassword(e.target.value)}
+												/>
+												{showPassword ? (
+													<FaEye
+														className="hidePassword"
+														onClick={() => setShoPassword(!showPassword)}
+													/>
+												) : (
+													<FaEyeSlash
+														className="hidePassword"
+														onClick={() => setShoPassword(!showPassword)}
+													/>
+												)}
+											</div>
+										</div>
+										<button className="Reset">Reset Password</button>
 									</div>
 								</div>
 							</div>

@@ -1,5 +1,3 @@
-
-
 .container {
 	width: 100%;
 	display: flex;
@@ -10,7 +8,6 @@
 .container1 {
 	padding: 100px;
 	width: 50%;
-
 }
 .container2 {
 	width: 50%;
@@ -42,29 +39,28 @@
 	border-radius: 10px;
 }
 
-.inputs .image-div{
+.inputs .image-div {
 	width: 14%;
 	border-right: 1px solid #ccc;
 }
 
-.inputs .input-div{
+.inputs .input-div {
 	width: 70%;
 	position: relative;
-	
 }
 
-.input-div input{
+.input-div input {
 	border: none;
 	outline: none;
 	padding: 10px 15px;
 	width: 100%;
 	font-size: 18px;
-	
 }
 
-.inputs:hover {
-	/* border: 2.28px solid #0000FF; */
+/* .inputs:hover {
+	border: 2.28px solid #0000FF;
 }
+*/
 
 .button-con button {
 	color: #fff;
@@ -80,7 +76,7 @@
 .button-con {
 	margin-top: 20px;
 }
-.hiddenPassword{
+.hiddenPassword {
 	position: absolute;
 	top: 15px;
 	color: #ccc;

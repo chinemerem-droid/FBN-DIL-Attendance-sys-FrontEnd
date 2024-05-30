@@ -36,7 +36,7 @@
 	font-weight: 400;
 	width: 40%;
 }
-.para{
+.para {
 	padding: 15px 0;
 }
 
@@ -173,18 +173,7 @@ main {
 	padding-top: 2em;
 }
 
-.table {
-	background-color: white;
-	width: 80%;
-	height: 90%;
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	border-radius: 21.75px;
-	margin-right: 8em;
-	padding-left: 2em;
-	padding-right: 2em;
-}
+ 
 .searchbar {
 	border-radius: 5px;
 	/* width: 70px; */
@@ -216,33 +205,7 @@ main {
 	outline: none;
 }
 
-/* .table-con {
-	display: flex;
-	font-display: column;
-	gap: 10px;
-	width: 100%;
-	background-color: purple; */
 
-/* th,
-td{
-	border: 1px solid #ffffff;
-	text-align: left;
-	padding: 8px;
-	font-size: 32px;
-
-
-.form{
-	display: flex;
-	gap: 5px;
-}
-.form td:last child{
-	display: flex;
-	justify-content: space-evenly;
-
-}
-form *{
-	font-size: 20px; */
-/* } */
 
 .table-title {
 	/* padding-top: 6em 0em; */
@@ -335,25 +298,85 @@ th {
 	width: 100vw;
 	height: 100vh;
 	z-index: 0;
-	top: 0%; 
-	left: 0%; 
+	top: 0%;
+	left: 0%;
 	/* transform: translate(-50%, -50%); */
 	position: absolute;
-  }
-  
-  .centered {
+}
+
+.centered {
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-  }
-  
-  .modal {
+}
+
+.modal {
 	width: 500px;
-	height: 300px;
+	height: 350px;
 	background: white;
 	color: black;
 	z-index: 10;
+	margin-top: 2em;
 	border-radius: 16px;
 	box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-  }
+}
+
+.hidePassword {
+	position: absolute;
+	color: #ccc;
+}
+.inputss .imageDiv {
+	width: 14%;
+	border-right: 1px solid #ccc;
+}
+.inputss {
+	display: flex;
+	flex-direction: row;
+	border: 1px solid #ccc;
+	width: 297px;
+	padding: 4px 10px;
+	gap: 10px;
+	margin-left: 6em;
+	margin-top: 2em;
+	border-radius: 10px;
+
+}
+.inputss .inputDiv {
+	width: 70%;
+	position: relative;
+}
+.inputDiv input {
+	border: none;
+	outline: none;
+	padding: 10px 15px;
+	width: 100%;
+	font-size: 18px;
+}
+.modal .Reset {
+	border-radius: 6.01px;
+ 	margin-top: 2em;
+	padding: 8.42px 33.67px;
+	background: #345782;
+	color: white;
+	margin-left: 11em;
+	border: none;
+   }
+/* .iconforreset{
+
+} */
+.Exit {
+  	background: transparent;
+  	translate:  12em -.9em;;
+	border: none;
+ }
+.top{
+	display: flex;
+     justify-content: center;
+	align-items: center;
+}
+.top h4 {
+    margin-top: 2em;
+ 	
+
+}

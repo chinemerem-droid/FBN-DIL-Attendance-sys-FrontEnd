@@ -250,7 +250,7 @@ tr:nth-child(even) {
 
 .table-container {
 	border: 2px;
-	background: hsl(0, 0%, 100%);
+	background: white;
 
 	width: 80%;
 	margin-left: 5em;
